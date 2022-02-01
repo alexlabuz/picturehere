@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Service\ImageService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,14 +14,14 @@ use Symfony\Component\Security\Core\Security;
 class PostController extends AbstractController
 {
     #[Route('/api/post/add', name: 'post_add')]
-    public function add(Request $request, Security $security, ManagerRegistry $doctrine): Response
+    public function add(Request $request, Security $security, ManagerRegistry $doctrine, ImageService $imageService): Response
     {
         $entityManager = $doctrine->getManager();
 
         // Image
         $nameImage = uniqid().".jpeg";
         $fileData = file_get_contents($request->files->get("picture"));
-        file_put_contents("./data/".$nameImage, $fileData);
+        $imageService->savePostImage($fileData, "./data/".$nameImage);
 
         // Post
         $postData = json_decode($request->request->get("post"));
@@ -38,11 +39,19 @@ class PostController extends AbstractController
     }
 
     #[Route('/api/post/delete/{id}', name: 'post_delete')]
-    public function delete(): Response
+    public function delete(Request $request, Security $security, ManagerRegistry $doctrine, $id): Response
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/PostController.php',
-        ]);
+        $entityManager = $doctrine->getManager();
+
+        $post = $entityManager->getRepository(Post::class)->find($id);
+
+        if($post == null) return $this->json(["Erreur" => "Le post n'existe pas"]);
+        if($post->getProfil()->GetId() != $security->getUser()->getProfil()->getId()) return $this->json(["Erreur" => "Ce post ne vous appertient pas"]);
+
+        $entityManager->remove($post);
+        unlink(".".$post->getLinkImage());
+        $entityManager->flush();
+
+        return $this->json(['message' => 'Post supprimé']);
     }
 }

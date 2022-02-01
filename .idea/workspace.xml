@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a3936ee2-4bd4-4f13-b2ab-841b23165c40" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/picturehere_back.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/picturehere_back.iml" afterDir="false" />
@@ -10,6 +11,10 @@
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+    </list>
+    <list id="c5b84204-d80e-477a-91b6-1535f8bc924a" name="Changes by Alex" comment="">
+      <change beforePath="$PROJECT_DIR$/public/data/61f86a64836c2.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/data/61f86ab62e665.jpeg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +110,11 @@
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
     </include_path>
   </component>
   <component name="ProjectId" id="24Tef4aCuKl0AGQNm9Z3co38VwU" />
@@ -141,6 +151,7 @@
       <workItem from="1643661560935" duration="1199000" />
       <workItem from="1643663542508" duration="4363000" />
       <workItem from="1643670273283" duration="287000" />
+      <workItem from="1643740699768" duration="2405000" />
     </task>
     <servers />
   </component>
