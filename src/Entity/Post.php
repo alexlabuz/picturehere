@@ -12,22 +12,24 @@ class Post
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["profil"])]
+    #[Groups(["profil", "thread"])]
     private $id;
 
     #[ORM\Column(type: 'text')]
-    #[Groups(["profil"])]
+    #[Groups(["profil", "thread"])]
     private $message;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["profil"])]
+    #[Groups(["profil", "thread"])]
     private $linkImage;
 
     #[ORM\Column(type: 'datetime')]
-    #[Groups(["profil"])]
+    #[Groups(["profil", "thread"])]
     private $date;
 
     #[ORM\ManyToOne(targetEntity: Profil::class, inversedBy: 'posts')]
+    #[Orm\JoinColumn(onDelete: "CASCADE")]
+    #[Groups(["thread"])]
     private $profil;
 
     public function getId(): ?int

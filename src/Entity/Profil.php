@@ -14,11 +14,11 @@ class Profil
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["profil"])]
+    #[Groups(["profil", "thread"])]
     private $id;
 
     #[ORM\Column(type: 'string', length: 50)]
-    #[Groups(["profil"])]
+    #[Groups(["profil", "thread"])]
     private $pseudo;
 
     #[ORM\Column(type: 'datetime')]
@@ -33,6 +33,7 @@ class Profil
     private $followed;
 
     #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'followed')]
+    #[Orm\JoinColumn(onDelete: "CASCADE")]
     #[Groups(["profil"])]
     private $follower;
 

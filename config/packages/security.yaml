@@ -28,12 +28,14 @@ security:
             jwt: ~
 
     access_control:
-        - { path: ^/api/user/login,         roles: PUBLIC_ACCESS  }
-        - { path: ^/api/user/register,      roles: PUBLIC_ACCESS  }
+        - { path: ^/api/user/login,         roles: PUBLIC_ACCESS }
+        - { path: ^/api/user/register,      roles: PUBLIC_ACCESS }
+        - { path: ^/api/user/delete,        roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/profil/connected,   roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/post/thread,        roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/post/add,           roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/post/delete,        roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/api,                    roles: IS_AUTHENTICATED_FULLY  }
+        - { path: ^/api,                    roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:
