@@ -26,7 +26,7 @@ class UserController extends AbstractController
             }
 
             if($entityManager->getRepository(User::class)->findBy(["username" => $data["username"]]) != null){
-                return $this->json(["message" => "Nom d'utilisateur déjà pri"], 401);
+                return $this->json(["message" => "Nom d'utilisateur déjà pris"], 401);
             }
 
             $user = new User();
@@ -38,12 +38,12 @@ class UserController extends AbstractController
             $profil->setDateInscription(new \DateTime());
 
             $user->setProfil($profil);
-//
-//            $entityManager->persist($user);
-//            $entityManager->persist($profil);
-//            $entityManager->flush();
 
-            return $this->json(['message' => "Utilisateur inscrit"]);
+            $entityManager->persist($user);
+            $entityManager->persist($profil);
+            $entityManager->flush();
+
+            return $this->json(['message' => "Votre insription est terminée, vous pouvez vous connecter !"]);
         }
         return $this->json(['message' => "Require post data"], 401);
     }
@@ -55,8 +55,8 @@ class UserController extends AbstractController
             $entityManager = $doctrine->getManager();
             $user = $entityManager->getRepository(User::class)->find($request->request->get("id"));
 
-            if($user == null) return $this->json(["error" => "Cet utilisateur n'existe pas"], 401);
-            if($user->getId() != $security->getUser()->getId()) return $this->json(["error" => "Cet utilisateur n'est pas vous"], 403);
+            if($user == null) return $this->json(["message" => "Cet utilisateur n'existe pas"], 401);
+            if($user->getId() != $security->getUser()->getId()) return $this->json(["message" => "Cet utilisateur n'est pas vous"], 403);
 
             $entityManager->remove($user);
             $entityManager->flush();

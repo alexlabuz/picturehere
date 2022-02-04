@@ -4,12 +4,16 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="2048" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/src/Controller/PostController.php" />
+          <option name="caretOffset" value="1221" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/Controller/UserController.php" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="2065" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/src/Controller/UserController.php" />
+          <option name="caretOffset" value="366" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/Controller/ProfilController.php" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="2637" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/Controller/PostController.php" />
         </OpenedFileInfo>
       </list>
     </option>

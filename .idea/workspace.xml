@@ -4,7 +4,6 @@
     <list default="true" id="a3936ee2-4bd4-4f13-b2ab-841b23165c40" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
     </list>
     <list id="e5560a5a-b008-49f9-ae35-f93fd0cf3fff" name="Changes by Alex" comment="" />
     <option name="SHOW_DIALOG" value="false" />
