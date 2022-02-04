@@ -53,9 +53,9 @@ class PostController extends AbstractController
             $entityManager->persist($post);
             $entityManager->flush();
 
-            return $this->json(['post' => "Post envoyé"]);
+            return $this->json(['message' => "Post envoyé"]);
         }
-        return $this->json(['message' => "Require post data"], 500);
+        return $this->json(['message' => "Require post data"], 401);
     }
 
     #[Route('/api/post/delete/{id}', name: 'post_delete')]
@@ -65,8 +65,8 @@ class PostController extends AbstractController
 
         $post = $entityManager->getRepository(Post::class)->find($id);
 
-        if($post == null) return $this->json(["Erreur" => "Le post n'existe pas"], 404);
-        if($post->getProfil()->GetId() != $security->getUser()->getProfil()->getId()) return $this->json(["Erreur" => "Ce post ne vous appertient pas"], 403);
+        if($post == null) return $this->json(["message" => "Le post n'existe pas"], 404);
+        if($post->getProfil()->GetId() != $security->getUser()->getProfil()->getId()) return $this->json(["message" => "Ce post ne vous appertient pas"], 403);
 
         $entityManager->remove($post);
         unlink(".".$post->getLinkImage());

@@ -21,6 +21,14 @@ class UserController extends AbstractController
             $entityManager = $doctrine->getManager();
             $data = $request->toArray();
 
+            if($data["username"] == null || $data["password"] == null || $data["pseudo"] == null){
+                return $this->json(["message" => "Données manquante"], 401);
+            }
+
+            if($entityManager->getRepository(User::class)->findBy(["username" => $data["username"]]) != null){
+                return $this->json(["message" => "Nom d'utilisateur déjà pri"], 401);
+            }
+
             $user = new User();
             $user->setUsername($data["username"]);
             $user->setPassword($passwordhash->hashPassword($user, $data["password"]));
@@ -30,14 +38,14 @@ class UserController extends AbstractController
             $profil->setDateInscription(new \DateTime());
 
             $user->setProfil($profil);
-
-            $entityManager->persist($user);
-            $entityManager->persist($profil);
-            $entityManager->flush();
+//
+//            $entityManager->persist($user);
+//            $entityManager->persist($profil);
+//            $entityManager->flush();
 
             return $this->json(['message' => "Utilisateur inscrit"]);
         }
-        return $this->json(['message' => "Require post data"], 500);
+        return $this->json(['message' => "Require post data"], 401);
     }
 
     #[Route('/api/user/delete', name: 'delete_account')]
@@ -47,7 +55,7 @@ class UserController extends AbstractController
             $entityManager = $doctrine->getManager();
             $user = $entityManager->getRepository(User::class)->find($request->request->get("id"));
 
-            if($user == null) return $this->json(["error" => "Cet utilisateur n'existe pas"], 404);
+            if($user == null) return $this->json(["error" => "Cet utilisateur n'existe pas"], 401);
             if($user->getId() != $security->getUser()->getId()) return $this->json(["error" => "Cet utilisateur n'est pas vous"], 403);
 
             $entityManager->remove($user);
@@ -55,6 +63,6 @@ class UserController extends AbstractController
 
             return $this->json(['message' => "Utilisateur supprimé"]);
         }
-        return $this->json(['message' => "Require post data and id parameters"], 500);
+        return $this->json(['message' => "Require post data and id parameters"], 401);
     }
 }
