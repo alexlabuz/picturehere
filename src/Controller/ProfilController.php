@@ -16,7 +16,7 @@ class ProfilController extends AbstractController
     {
         $profil = $serializer->serialize($security->getUser(), 'json', [
             "groups" => "profil",
-            DateTimeNormalizer::FORMAT_KEY => 'Y-m-d H:i:s',
+            DateTimeNormalizer::FORMAT_KEY => 'Y-m-d\TH:i:s.v\Z',
         ]);
 
         return $this->json(["Utilisateur" => json_decode($profil)]);
