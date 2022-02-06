@@ -25,7 +25,6 @@ class Profil
     private $dateInscription;
 
     #[ORM\OneToMany(mappedBy: 'profil', targetEntity: Post::class)]
-    #[Groups(["profil"])]
     private $posts;
 
     #[ORM\ManyToMany(targetEntity: self::class, inversedBy: 'follower')]

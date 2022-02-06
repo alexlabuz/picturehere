@@ -16,15 +16,36 @@ use Symfony\Component\Serializer\SerializerInterface;
 class PostController extends AbstractController
 {
     #[Route('/api/post/thread', name: 'post_thread')]
-    public function thread(Request $request, ManagerRegistry $doctrine, SerializerInterface $serializer): Response
+    public function thread(ManagerRegistry $doctrine, SerializerInterface $serializer): Response
     {
         $entityManager = $doctrine->getManager();
 
-        $postsRepo = $entityManager->getRepository(Post::class)->findAll();
+        $postsRepo = $entityManager->getRepository(Post::class)->findBy(
+            [],
+            ["date" => "DESC"]
+        );
 
         $posts = $serializer->serialize($postsRepo, 'json', [
             "groups" => "thread",
-            DateTimeNormalizer::FORMAT_KEY => 'Y-m-d H:i:s',
+            DateTimeNormalizer::FORMAT_KEY => 'Y-m-d\TH:i:s.v\Z',
+        ]);
+
+        return $this->json(json_decode($posts));
+    }
+
+    #[Route('/api/post/user/{id}', name: 'post_user')]
+    public function postByUser(ManagerRegistry $doctrine, SerializerInterface $serializer, $id): Response
+    {
+        $entityManager = $doctrine->getManager();
+
+        $postsRepo = $entityManager->getRepository(Post::class)->findBy(
+            ["profil" => $id],
+            ["date" => "DESC"]
+        );
+
+        $posts = $serializer->serialize($postsRepo, 'json', [
+            "groups" => "thread",
+            DateTimeNormalizer::FORMAT_KEY => 'Y-m-d\TH:i:s.v\Z',
         ]);
 
         return $this->json(json_decode($posts));

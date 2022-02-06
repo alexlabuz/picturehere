@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a3936ee2-4bd4-4f13-b2ab-841b23165c40" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/lexik_jwt_authentication.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Profil.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Profil.php" afterDir="false" />
     </list>
     <list id="e5560a5a-b008-49f9-ae35-f93fd0cf3fff" name="Changes by Alex" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -145,6 +149,7 @@
       <workItem from="1643755011352" duration="264000" />
       <workItem from="1643822328216" duration="2310000" />
       <workItem from="1643998780384" duration="598000" />
+      <workItem from="1644180185967" duration="298000" />
     </task>
     <servers />
   </component>

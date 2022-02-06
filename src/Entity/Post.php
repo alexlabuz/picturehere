@@ -12,19 +12,19 @@ class Post
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    #[Groups(["profil", "thread"])]
+    #[Groups(["thread"])]
     private $id;
 
     #[ORM\Column(type: 'text')]
-    #[Groups(["profil", "thread"])]
+    #[Groups(["thread"])]
     private $message;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Groups(["profil", "thread"])]
+    #[Groups(["thread"])]
     private $linkImage;
 
     #[ORM\Column(type: 'datetime')]
-    #[Groups(["profil", "thread"])]
+    #[Groups(["thread"])]
     private $date;
 
     #[ORM\ManyToOne(targetEntity: Profil::class, inversedBy: 'posts')]
