@@ -35,7 +35,7 @@ class ProfilController extends AbstractController
 
             $user = $entityManager->getRepository(User::class)->find($security->getUser()->getId());
 
-            if(isset($data["password"]) && strlen($data["password"]) > 0){
+            if(isset($data["pseudo"]) && strlen($data["pseudo"]) > 0){
                 $user->getProfil()->setPseudo($data["pseudo"]);
             }
 
