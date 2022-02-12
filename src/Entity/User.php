@@ -30,6 +30,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     #[ORM\OneToOne(targetEntity: Profil::class, cascade: ['persist', 'remove'])]
+    #[Orm\JoinColumn(onDelete: "CASCADE")]
     #[Groups(["profil"])]
     private $profil;
 

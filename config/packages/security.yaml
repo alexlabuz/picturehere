@@ -32,6 +32,7 @@ security:
         - { path: ^/api/user/register,      roles: PUBLIC_ACCESS }
         - { path: ^/api/user/delete,        roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/profil/connected,   roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/profil/update,      roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/post/thread,        roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/post/thread/user,   roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api/post/add,           roles: IS_AUTHENTICATED_FULLY }

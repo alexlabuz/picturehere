@@ -58,6 +58,12 @@ class UserController extends AbstractController
             if($user == null) return $this->json(["message" => "Cet utilisateur n'existe pas"], 401);
             if($user->getId() != $security->getUser()->getId()) return $this->json(["message" => "Cet utilisateur n'est pas vous"], 403);
 
+            // Supprime les images des posts de l'utilisateur
+            $posts = $user->getProfil()->getPosts();
+            foreach ($posts as $e) {
+                unlink(".".$e->getLinkImage());
+            }
+
             $entityManager->remove($user);
             $entityManager->flush();
 

@@ -22,9 +22,11 @@ class Profil
     private $pseudo;
 
     #[ORM\Column(type: 'datetime')]
+    #[Groups(["profil"])]
     private $dateInscription;
 
     #[ORM\OneToMany(mappedBy: 'profil', targetEntity: Post::class)]
+    #[Orm\JoinColumn(onDelete: "CASCADE")]
     private $posts;
 
     #[ORM\ManyToMany(targetEntity: self::class, inversedBy: 'follower')]
@@ -32,7 +34,6 @@ class Profil
     private $followed;
 
     #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'followed')]
-    #[Orm\JoinColumn(onDelete: "CASCADE")]
     #[Groups(["profil"])]
     private $follower;
 

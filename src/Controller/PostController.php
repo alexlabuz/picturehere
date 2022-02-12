@@ -22,7 +22,8 @@ class PostController extends AbstractController
 
         $postsRepo = $entityManager->getRepository(Post::class)->findBy(
             [],
-            ["date" => "DESC"]
+            ["date" => "DESC"],
+            20
         );
 
         $posts = $serializer->serialize($postsRepo, 'json', [
@@ -40,7 +41,8 @@ class PostController extends AbstractController
 
         $postsRepo = $entityManager->getRepository(Post::class)->findBy(
             ["profil" => $id],
-            ["date" => "DESC"]
+            ["date" => "DESC"],
+            20
         );
 
         $posts = $serializer->serialize($postsRepo, 'json', [
@@ -55,6 +57,9 @@ class PostController extends AbstractController
     public function add(Request $request, Security $security, ManagerRegistry $doctrine, ImageService $imageService): Response
     {
         if($request->isMethod("post")){
+            if($request->files->get("picture") == null) return $this->json(['message' => "Picture required"], 401);
+            if($request->request->get("post") == null) return $this->json(['message' => "Post required"], 401);
+
             $entityManager = $doctrine->getManager();
 
             // Image
